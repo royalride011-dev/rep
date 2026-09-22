@@ -1,8 +1,8 @@
 {
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter @workspace/royal-ride-clone run build",
-  "outputDirectory": "artifacts/royal-ride-clone/dist/public",
+  "buildCommand": "pnpm run build:vercel",
+  "outputDirectory": "public",
   "env": {
     "PORT": "3000",
     "BASE_PATH": "/"

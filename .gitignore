@@ -3,6 +3,7 @@
 # compiled output
 dist
 build
+/public
 tmp
 out-tsc
 *.tsbuildinfo

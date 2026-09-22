@@ -91,7 +91,7 @@ Preview the built Royal Ride site locally:
 pnpm preview
 ```
 
-The website output is written to `artifacts/royal-ride-clone/dist/public`.
+The Royal Ride package output is written to `artifacts/royal-ride-clone/dist/public`. The Vercel-specific build then copies that output to the generated root-level `public` directory, which is the directory Vercel serves.
 
 `PORT` and `BASE_PATH` are optional for local builds. Defaults are `19432` and `/`; deployment platforms can override them.
 
@@ -127,8 +127,9 @@ The repository includes `vercel.json` for the Royal Ride artifact. It configures
 
 - Vite framework detection
 - frozen pnpm installation
-- `pnpm --filter @workspace/royal-ride-clone run build`
-- output directory `artifacts/royal-ride-clone/dist/public`
+- `pnpm run build:vercel`
+- generated output directory `public`
+- source build directory `artifacts/royal-ride-clone/dist/public`
 - `PORT=3000` and `BASE_PATH=/` during the Vercel build
 - SPA fallback rewrites to `index.html`
 
