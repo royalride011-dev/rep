@@ -1,0 +1,17 @@
+{
+  "framework": "vite",
+  "nodeVersion": "22.x",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm --filter @workspace/royal-ride-clone run build",
+  "outputDirectory": "artifacts/royal-ride-clone/dist/public",
+  "env": {
+    "PORT": "3000",
+    "BASE_PATH": "/"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
