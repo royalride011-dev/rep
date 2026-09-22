@@ -1,19 +1,23 @@
-# [Project name]
+# Royal Ride Jordan workspace
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+This pnpm workspace contains the Royal Ride Jordan one-page luxury transportation website plus a separate optional API/DB stack.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm dev` — run the Royal Ride website on port 19432
+- `pnpm preview` — preview the built Royal Ride website
+- `pnpm --filter @workspace/api-server run dev` — run the separate API server
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Royal Ride web defaults: `PORT=19432`, `BASE_PATH=/`
+- API/DB env: `DATABASE_URL`, with `PORT` and `NODE_ENV` when running the API directly
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- Website: React + Vite
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
@@ -22,23 +26,36 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/royal-ride-clone/` — Royal Ride website source, public assets, and Vite config
+- `artifacts/royal-ride-clone/.replit-artifact/artifact.toml` — Replit artifact workflow and static deployment settings
+- `artifacts/api-server/` — separate API artifact
+- `lib/api-spec/openapi.yaml` — API contract source of truth
+- `lib/db/src/schema/` — database schema source of truth
+- `vercel.json` — Vercel build, output, and SPA fallback configuration
+- `README.md` — local development, deployment, domain, and troubleshooting guide
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The Royal Ride website is intentionally a static one-page React/Vite app.
+- Quote requests are prepared for WhatsApp; the web artifact does not currently write booking data to the API or database.
+- Vite defaults `PORT` and `BASE_PATH` so local builds do not depend on Replit-only environment injection.
+- The production website is served as static output with an SPA fallback; section anchors are used instead of invented service routes.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Royal Ride presents luxury transportation services in Jordan, including airport transfers, private chauffeur service, executive travel, private tours, fleet options, destination journeys, and a WhatsApp-assisted private quote flow.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Preserve the existing Royal Ride colors, typography, logo, imagery, layout, and luxury visual language.
+- Do not invent company claims, reviews, awards, statistics, or service pages.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Use pnpm, not npm or yarn.
+- Run the Royal Ride build with `pnpm --filter @workspace/royal-ride-clone run build`.
+- Keep real `DATABASE_URL` values in secrets or ignored local files.
+- The Replit API and Royal Ride web artifacts are separate services.
 
 ## Pointers
 

@@ -2,14 +2,21 @@
 
 # compiled output
 dist
+build
 tmp
 out-tsc
 *.tsbuildinfo
+.vercel
 .expo
 .expo-shared
 
 # dependencies
 node_modules
+
+# environment files
+.env
+.env.*
+!.env.example
 
 # IDEs and editors
 /.idea
@@ -35,6 +42,8 @@ node_modules
 npm-debug.log
 yarn-error.log
 testem.log
+*.log
+/logs
 /typings
 
 # System Files
